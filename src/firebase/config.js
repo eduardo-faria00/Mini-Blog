@@ -1,6 +1,6 @@
 // configurações do firebase. Obtidas na aba das configurações do aplicativo no firebase
 import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firebase'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCq5NYMmJ0xyKJRBEbEUthbMgotzumHJaM',

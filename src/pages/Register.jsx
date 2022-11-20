@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useAuth } from '../hooks/useAuth'
 
 const Register = () => {
   const [displayName, setDisplayName] = useState('')
@@ -7,7 +8,9 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
 
-  const handleSubmit = (event) => {
+  const { createUser, error: authError, loading } = useAuth()
+
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
     setError('')
@@ -22,7 +25,15 @@ const Register = () => {
       setError('As senhas precisam ser iguais')
       return
     }
+    const res = await createUser(user)
+    console.log(res)
   }
+
+  useEffect(() => {
+    if (authError) {
+      setError(authError)
+    }
+  }, [authError])
 
   return (
     <div className="flex flex-col items-center text-black">
@@ -82,9 +93,19 @@ const Register = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </label>
-        <button className="bg-gradient-to-r from-blue-500 to-violet-500 rounded-md border-none p-1 text-white font-bold text-lg hover:scale-105 duration-200">
-          Cadastrar
-        </button>
+        {!loading && (
+          <button className="bg-gradient-to-r from-blue-500 to-violet-500 rounded-md border-none p-1 text-white font-bold text-lg hover:scale-105 duration-200">
+            Cadastrar
+          </button>
+        )}
+        {loading && (
+          <button
+            className="bg-gradient-to-r from-blue-500 to-violet-500 rounded-md border-none p-1 text-white font-bold text-lg hover:scale-105 duration-200"
+            disabled
+          >
+            Aguarde...
+          </button>
+        )}
         {error && (
           <p
             className="p-1 bg-red-500 text-white text-center
