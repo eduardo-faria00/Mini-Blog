@@ -14,24 +14,33 @@ const CreatePost = () => {
   }
 
   return (
-    <div className="flex flex-col text-center items-center">
-      <h2>Criar Post</h2>
-      <p>Escreva sobre o que quiser e compartilhe seu conhecimento!</p>
-      <form onSubmit={handleSubmit} className="flex flex-col">
-        <label className="flex flex-col items-start">
-          <span>Título:</span>
+    <div className="flex flex-col items-center text-black">
+      <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500 text-4xl font-bold mb-1">
+        Criar Post
+      </h2>
+      <p className="text-gray-400 mb-1">
+        Escreva sobre o que quiser e compartilhe seu conhecimento!
+      </p>
+      <form
+        className="xl:w-1/3 lg:w-2/5 md:w-3/6 w-4/5 flex flex-col justify-center bg-gray-100 rounded-md p-6"
+        onSubmit={handleSubmit}
+      >
+        <label className="flex flex-col mb-2">
+          <span className="font-bold">Título:</span>
           <input
+            className="box-border p-1 border-b-2 bg-transparent outline-none"
             type="text"
             name="title"
             required
-            placeholder="Adicione um título criativo..."
+            placeholder="Adicione um título criativo"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
           />
         </label>
-        <label className="flex flex-col items-start">
-          <span>URL da imagem:</span>
+        <label className="flex flex-col mb-2">
+          <span className="font-bold">URL da imagem:</span>
           <input
+            className="box-border p-1 border-b-2 bg-transparent outline-none"
             type="text"
             name="image"
             required
@@ -40,9 +49,10 @@ const CreatePost = () => {
             value={image}
           />
         </label>
-        <label className="flex flex-col items-start">
-          <span>Conteúdo:</span>
+        <label className="flex flex-col mb-2">
+          <span className="font-bold">Conteúdo:</span>
           <textarea
+            className="box-border p-1 border-b-2 bg-transparent outline-none"
             name="body"
             required
             placeholder="Insira o conteúdo do seu post..."
@@ -50,9 +60,10 @@ const CreatePost = () => {
             value={body}
           ></textarea>
         </label>
-        <label className="flex flex-col items-start">
-          <span>Tags:</span>
+        <label className="flex flex-col mb-2">
+          <span className="font-bold">Tags:</span>
           <input
+            className="box-border p-1 border-b-2 bg-transparent outline-none"
             type="text"
             name="tags"
             required
@@ -61,7 +72,7 @@ const CreatePost = () => {
             value={tags}
           />
         </label>
-        <button className="bg-gradient-to-r from-blue-500 to-violet-500 rounded-md border-none p-1 text-white font-bold text-lg hover:scale-105 duration-200">
+        <button className="bg-gradient-to-r from-blue-500 to-violet-500 rounded-md border-none p-1 text-white font-bold text-lg hover:scale-105 duration-200 mt-2">
           Criar Post
         </button>
         {/* {!loading && (
